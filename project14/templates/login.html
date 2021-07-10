@@ -1,0 +1,58 @@
+
+
+
+{% extends 'index.html' %}
+
+{% block content %}
+    {% load static %}
+    <form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+
+    <div class="container" style="background-color: orangered; width: 350px; color: white; border-radius: 10px; border-color: black; border-width:2px;border-style: solid">
+      <div>
+          <h3 style="padding:10px">Login Page</h3>
+      </div>
+
+          <table align="center" border="0">
+          <div style="padding:10px">
+              <input
+                  type="email"
+                  placeholder="Email(Username)"
+                  name="email"
+                  required
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div style="padding: 10px">
+              <input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  required
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
+          </div>
+
+          <div style="padding: 10px">
+              <button type="submit" class="btn btn-info">Login</button>
+          </div>
+
+                {% if error_message %}
+
+                    <div style="padding: 10px">
+                       <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                         <strong> {{ error_message }}</strong>
+                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                     </div>
+                {% endif %}
+
+
+          </table>
+
+    </div>
+    </form>
+{% endblock %}
+

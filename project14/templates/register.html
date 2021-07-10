@@ -1,0 +1,82 @@
+
+
+{% extends 'index.html' %}
+
+{% block content %}
+ <form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+
+    <table align="center" border="0" >
+      <tr>
+          <th> <h2>Registration Page</h2></th>
+      </tr>
+      <tr>
+          <td>
+              <input
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  required
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
+
+              <input
+                  type="number"
+                  placeholder="Contact No"
+                  name="contact"
+                  required
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
+
+               <input
+                  type="text"
+                  placeholder="Location"
+                  name="location"
+                  required
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
+
+              <input
+                  type="text"
+                  placeholder="Email(Username)"
+                  name="email"
+                  required
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
+
+              <input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  required
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
+
+          </td>
+
+      </tr>
+      <tr>
+          <th>
+               <button type="submit" class="btn btn-outline-secondary">Register</button>
+          </th>
+      </tr>
+
+        {% if message %}
+            <tr>
+                <th>
+                         <div class="alert alert-danger" role="alert">
+                            {{ message }}
+                        </div>
+                </th>
+            </tr>
+        {% endif %}
+
+
+    </table>
+ </form>
+{% endblock %}
