@@ -1,0 +1,57 @@
+
+{% extends 'common/common.html' %}
+
+{% block menu %}
+    {% include 'common/menu.html' %}
+
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'validate_otp' %}" method="post">
+     {% csrf_token %}
+    <div class="container" style="width:450px">
+        <div class="row student_otp">
+            <div class="col">
+                <div class="alert alert Danger" role="alert">
+
+                    {% for message in messages %}
+
+                    We sent an otp to this Number: {{ message }}
+                    <input type="hidden", name="contact" value="{{message}}">
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row student_otp">
+            <div class="col">
+                <h1> Validate OTP>
+                </h1>
+            </div>
+        </div>
+
+         <div class="row student_otp">
+            <div class="col">
+
+                  <input type="password"
+                         placeholder="Enter 6 Digit OTP"
+                         max="6"
+                         min="6"
+                         name="student_otp"
+                         required
+                         class="form-control"
+                         aria-label="Sizing example input"
+                         aria-describedby="inputGroup-sizing-default">
+            </div>
+         </div>
+        <div class="row student_otp">
+            <div class="col">
+                  <button type="submit" class="btn-danger">Submit</button>
+
+            </div>
+        </div>
+    </div>
+    </form>
+
+{% endblock %}

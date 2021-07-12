@@ -1,0 +1,35 @@
+
+{% extends 'common/common.html' %}
+
+{% block menu %}
+    {% include 'common/menu.html' %}
+
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <div class="container">
+        <div class="row">
+           <div class="col">
+               <img src="{% static 'images/web dev.png' %}" width="450" height="300">
+           </div>
+              <div class="col">
+                  <div class="eltdf-st-inner">
+                  <h3 class="eltdf-st-title">
+				  About Sathya Technologies
+                  </h3>
+                     <div class="eltdf-separator-holder clearfix  eltdf-separator-left ">
+                      <div class="eltdf-separator" style="border-color: #ff1949;width: 38px;border-bottom-width: 3px;margin-top: 23px;margin-bottom: 9px"></div>
+                     </div>
+                        <h5 class="eltdf-st-text" style="font-size: 25px;margin-top: 15px">
+				          At Satya technologies you are guaranteed best in class training as we team up the most efficient, professional and dedicated trainers who are subject matter experts in their respective area of specialization.			</h5>
+                  </div>
+              </div>
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}
