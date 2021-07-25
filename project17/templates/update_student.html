@@ -1,0 +1,58 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+  <table align="center" border="2">
+      <tr>
+          <th colspan="2">update Student Information</th>
+      </tr>
+      <tr>
+          <th rowspan="5">
+              <img src="{{ student_info.photo.url }}" width="250" height="250">
+          </th>
+          <th>Student Number: {{ student_info.number }}</th>
+      </tr>
+
+      <tr>
+          <th>Student Name: {{ student_info.name }}</th>
+      </tr>
+
+      <tr>
+          <th>Student Contact: {{ student_info.contact }}</th>
+      </tr>
+
+      <tr>
+          <th>Student DOB: {{ student_info.dob }}</th>
+      </tr>
+
+      <tr>
+          <th>Student Email:{{ student_info.email}}</th>
+      </tr>
+
+
+
+      <tr>
+          <th>
+              <form action="{% url 'admin' %}">
+                  <button type="submit" class="btn-primary">Cancel</button>
+              </form>
+          </th>
+          <th>
+              <form action="{% url 'update_student' student_info.name %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-info">Update</button>
+              </form>
+          </th>
+      </tr>
+
+  </table>

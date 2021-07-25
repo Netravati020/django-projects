@@ -1,0 +1,75 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+  <table align="center" border="2"  class="table table-dark">>
+      <tr>
+          <th colspan="9" style="color: orangered">
+              <h2>Welcome Admin</h2>
+          </th>
+      </tr>
+      <tr>
+        <th>Number</th>
+        <th>Name</th>
+        <th>Contact</th>
+        <th>Photo</th>
+        <th>Date Of Birth</th>
+        <th>Email</th>
+        <th>Registred Date</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+      {% for student in student_info %}
+          <tr>
+          <th>{{ student.number }}</th>
+          <th>{{ student.name }}</th>
+          <th>{{ student.contact }}</th>
+
+          <th>
+              <img src="{{ student.photo.url }}"  width="100" height="100">
+          </th>
+          <th>{{ student.dob }}</th>
+          <th>{{ student.email }}</th>
+          <th>{{ student.date_of_reg }}</th>
+
+          <th>
+              <a href="{% url 'update_student' student.name %}">
+              Update
+              </a>
+          </th>
+
+          <th>
+              <a href="{% url 'delete_student' student.number %}">
+                   <img src="{% static 'images/delblack.jpg' %}" width="50" height="50">
+              </a>
+          </th>
+
+          </tr>
+      {% endfor %}
+  </table>
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

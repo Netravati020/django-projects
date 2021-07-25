@@ -1,0 +1,72 @@
+
+<html>
+<body>
+
+<table align="center" border="1">
+    <tr>
+        <th colspan="2" style="color: mediumslateblue; background-color: lightpink" >
+            <h2> Student Registration</h2>
+        </th>
+    </tr>
+    <tr style="color: coral; background-color: aquamarine">
+        <th>
+            <h3> Student</h3>
+        </th>
+        <th>
+            <h3> Admin</h3>
+        </th>
+    </tr>
+    <tr>
+        <th colspan="2">
+            <form action="{% url 'save_student' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+            <table align="center" border="1">
+                <tr>
+                    <th>
+                        <h4> Students Registration</h4>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="text" placeholder="Name" required name="name">
+                    </th>
+                </tr>
+                 <tr>
+                    <th>
+                        <input type="number" placeholder="Contact" required name="contact">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Photo: <input type="file" required name="photo">
+
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Date of Birth: <input type="date" required name="DOB">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                         <input type="email" placeholder="Email" required name="email">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                         <input type="password" placeholder="Password" required name="password">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <button type="submit" class="btn-warning">submit</button>
+                    </th>
+                </tr>
+            </table>
+            </form>
+
+        </th>
+    </tr>
+</table>
+</body>
+</html>
