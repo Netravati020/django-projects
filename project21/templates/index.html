@@ -1,0 +1,48 @@
+
+{% extends 'common.html' %}
+
+{% block content %}
+    <form action="{% url 'main' %}" method="post">
+    {% csrf_token %}
+
+
+    <table align="center">
+        <tr>
+            <th>
+                Customer Details
+            </th>
+        </tr>
+
+        {{ cform }}
+
+        <tr>
+            <th>
+                <button type="submit" class="btn-primary">Save</button>
+            </th>
+        </tr>
+    </table>
+    </form>
+
+    <table align="center" class="table table-success table-striped">
+        <tr style="color: orangered; padding: 10px">
+            <th>Customer Details</th>
+        </tr>
+
+        <tr>
+            <th>Customer ID</th>
+            <th>Customer NAME</th>
+            <th>Customer CONTACT</th>
+        </tr>
+
+        {% for customer in cdata %}
+            <tr>
+                <th>{{ customer.customer_id }}</th>
+                <th>{{ customer.customer_name }}</th>
+                <th>{{ customer.customer_contact }}</th>
+            </tr>
+        {% endfor %}
+
+
+    </table>
+
+{% endblock %}

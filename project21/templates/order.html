@@ -1,0 +1,56 @@
+
+
+{% extends 'common.html' %}
+
+{% block content %}
+    <form action="{% url 'order' %}" method="post">
+    {% csrf_token %}
+
+
+    <table align="center" >
+        <tr>
+            <th>
+                Order Details
+            </th>
+        </tr>
+
+        {{ oform }}
+
+        <tr>
+            <th>
+                <button type="submit" class="btn-primary">Save</button>
+            </th>
+        </tr>
+    </table>
+    </form>
+
+    <table align="center" class="table table-success table-striped">
+        <tr style="color: orangered">
+            <th>Product Details</th>
+        </tr>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer ID</th>
+            <th>Customer NAME</th>
+            <th>Product List</th>
+        </tr>
+
+        {% for order in odata %}
+            <tr>
+                <th>{{ order.order_id }}</th>
+                <th>{{ order.cust_id }}</th>
+                <th>
+                    {{ order.cust_id.customer_name }}
+                </th>
+                <th>
+                    {% for product in order.product.all %}
+                        <p> {{ product.product_name }} - {{ product.product_price }}</p>
+                    {% endfor %}
+                </th>
+            </tr>
+        {% endfor %}
+
+
+    </table>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+
+
+
+{% extends 'common.html' %}
+
+{% block content %}
+    <form action="{% url 'product' %}" method="post">
+    {% csrf_token %}
+
+
+    <table align="center">
+        <tr>
+            <th>
+                Product Details
+            </th>
+        </tr>
+
+        {{ pform }}
+
+        <tr>
+            <th>
+                <button type="submit" class="btn-primary">Save</button>
+            </th>
+        </tr>
+    </table>
+    </form>
+
+    <table align="center" class="table table-success table-striped">
+        <tr style="color: orangered">
+            <th>Product Details</th>
+        </tr>
+        <tr>
+            <th>Product ID</th>
+            <th>Product NAME</th>
+            <th>Product PRICE</th>
+        </tr>
+
+        {% for product in pdata %}
+            <tr>
+                <th>{{ product.product_id }}</th>
+                <th>{{ product.product_name }}</th>
+                <th>{{ product.product_price }}</th>
+            </tr>
+        {% endfor %}
+
+
+    </table>
+
+{% endblock %}
